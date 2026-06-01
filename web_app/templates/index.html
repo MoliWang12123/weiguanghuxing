@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}微光护行｜护理人文与生命治愈网站{% endblock %}
+{% block content %}
+<section class="hero soft-grid">
+  <div class="hero-text">
+    <p class="eyebrow">Nursing Humanity · Gentle Care</p>
+    <h1>把护理的微光，写进每一次被看见的生命里</h1>
+    <p class="lead">面向护理人文、生命教育与心理关怀的温柔治愈网站。它不做硬知识堆砌，而是以故事、树洞、科普和光影相册呈现照护关系中的温度。</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="{{ url_for('stories') }}">进入微光故事</a>
+      <a class="btn secondary" href="{{ url_for('treehole') }}">写一封树洞来信</a>
+    </div>
+  </div>
+  <div class="hero-card glass">
+    <img src="{{ url_for('static', filename='img/hero_nurse.svg') }}" alt="护理人文插画">
+    <div class="pulse-note">今日微光：愿每一位照护者，也被温柔照护。</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <span>Four Modules</span>
+    <h2>核心功能板块</h2>
+  </div>
+  <div class="module-grid">
+    <a class="module-card" href="{{ url_for('stories') }}"><b>微光故事</b><p>护士暖心瞬间与患者康复故事。</p></a>
+    <a class="module-card" href="{{ url_for('treehole') }}"><b>护士树洞</b><p>匿名表达压力，获得温柔回应。</p></a>
+    <a class="module-card" href="{{ url_for('classroom') }}"><b>生命小课堂</b><p>儿童、老人、术后与心理健康科普。</p></a>
+    <a class="module-card" href="{{ url_for('gallery') }}"><b>光影相册</b><p>护理人文摄影与手绘风插画。</p></a>
+  </div>
+</section>
+
+<section class="section split-section">
+  <div>
+    <div class="section-head left"><span>Stories</span><h2>最新微光故事</h2></div>
+    <div class="story-list">
+      {% for item in stories %}
+      <article class="story-card">
+        <span class="tag">{{ item.category }}</span>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.summary }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+  <aside class="warm-panel">
+    <h3>护理树洞回声</h3>
+    {% for msg in messages %}
+    <div class="mini-message"><strong>{{ msg.emotion }}</strong><p>{{ msg.reply }}</p></div>
+    {% endfor %}
+  </aside>
+</section>
+
+<section class="section classroom-preview">
+  <div class="section-head"><span>Life Classroom</span><h2>温柔版健康科普</h2></div>
+  <div class="article-grid">
+    {% for article in articles %}
+    <article class="article-card">
+      <span class="tag">{{ article.category }}</span>
+      <h3>{{ article.title }}</h3>
+      <p>{{ article.summary }}</p>
+      <small>{{ article.tips }}</small>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

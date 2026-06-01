@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}生命小课堂｜微光护行{% endblock %}
+{% block content %}
+<section class="page-hero compact green">
+  <p class="eyebrow">Gentle Health Education</p>
+  <h1>生命小课堂</h1>
+  <p>以温柔、可理解的语言呈现术后护理、儿童护理、老年护理和护士心理健康知识。</p>
+</section>
+<section class="section">
+  <form class="search-line" method="get">
+    <input name="q" value="{{ keyword }}" placeholder="搜索关键词，如术后、儿童、跌倒、压力">
+    <select name="category">
+      {% for c in categories %}<option value="{{ c }}" {{ 'selected' if c==current else '' }}>{{ c }}</option>{% endfor %}
+    </select>
+    <button class="btn secondary" type="submit">检索</button>
+  </form>
+  <div class="wide-list">
+    {% for article in articles %}
+    <article class="wide-card mint">
+      <span class="tag">{{ article.category }}</span>
+      <h2>{{ article.title }}</h2>
+      <p>{{ article.content }}</p>
+      <div class="tip-box">护理提示：{{ article.tips }}</div>
+    </article>
+    {% else %}
+    <p class="empty">暂未检索到相关内容。</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

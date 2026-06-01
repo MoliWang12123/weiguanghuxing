@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}微光故事｜微光护行{% endblock %}
+{% block content %}
+<section class="page-hero compact">
+  <p class="eyebrow">Tiny Stories</p>
+  <h1>微光故事</h1>
+  <p>记录真实护士暖心瞬间、患者康复故事和临床沟通中的心理关怀。</p>
+</section>
+<section class="section">
+  <div class="filter-bar">
+    {% for c in categories %}<a class="chip {{ 'active' if c==current else '' }}" href="{{ url_for('stories', category=c) }}">{{ c }}</a>{% endfor %}
+  </div>
+  <div class="wide-list">
+    {% for item in stories %}
+    <article class="wide-card">
+      <span class="tag">{{ item.category }}</span>
+      <h2>{{ item.title }}</h2>
+      <p class="meta">{{ item.author }} · {{ item.created_at }}</p>
+      <p>{{ item.content }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

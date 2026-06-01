@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}光影相册｜微光护行{% endblock %}
+{% block content %}
+<section class="page-hero compact lavender">
+  <p class="eyebrow">Healing Album</p>
+  <h1>光影相册</h1>
+  <p>以摄影感与手绘感结合，呈现护理人文中的细节、秩序和温度。</p>
+</section>
+<section class="section gallery-grid">
+  {% for item in albums %}
+  <article class="photo-card">
+    <img src="{{ url_for('static', filename='img/' + item.img) }}" alt="{{ item.title }}">
+    <h3>{{ item.title }}</h3>
+    <p>{{ item.desc }}</p>
+  </article>
+  {% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}关于项目｜微光护行{% endblock %}
+{% block content %}
+<section class="page-hero compact">
+  <p class="eyebrow">Project Design</p>
+  <h1>关于“微光护行”</h1>
+  <p>该项目以Python Flask为后端框架，以SQLite作为轻量级数据存储，前端采用HTML、CSS与JavaScript实现响应式交互。</p>
+</section>
+<section class="section about-grid">
+  <article class="wide-card"><h2>设计目标</h2><p>在保证课程作品可运行、可展示、可扩展的基础上，将护理人文、生命治愈、心理关怀与健康教育进行主题化整合，形成具有审美表达和实际价值的Web作品。</p></article>
+  <article class="wide-card"><h2>技术架构</h2><p>系统采用MVC风格组织：Flask路由负责请求分发，Jinja2模板负责页面渲染，SQLite负责持久化存储，CSS与JavaScript负责视觉样式和交互体验。</p></article>
+  <article class="wide-card"><h2>部署方式</h2><p>可在本地通过127.0.0.1:5000访问，也可部署至Render、PythonAnywhere或学校服务器。部署后主要页面可通过公开链接访问，树洞留言等主要功能可正常使用。</p></article>
+</section>
+{% endblock %}

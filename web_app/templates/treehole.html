@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}护士树洞｜微光护行{% endblock %}
+{% block content %}
+<section class="page-hero compact pink">
+  <p class="eyebrow">Care for Caregivers</p>
+  <h1>护士树洞</h1>
+  <p>写下压力、紧张或疲惫。系统会保存匿名留言，并给出一条温柔回应。</p>
+</section>
+<section class="section split-section reverse">
+  <form class="form-card" method="post">
+    <label>昵称</label>
+    <input name="nickname" maxlength="16" placeholder="可留空，默认匿名">
+    <label>此刻情绪</label>
+    <select name="emotion">
+      <option>平静</option><option>疲惫</option><option>焦虑</option><option>紧张</option><option>难过</option><option>委屈</option>
+    </select>
+    <label>想说的话</label>
+    <textarea name="content" required maxlength="200" placeholder="把今天最想放下的一句话写在这里。"></textarea>
+    <button class="btn primary" type="submit">投递到树洞</button>
+  </form>
+  <div class="message-wall">
+    {% for msg in messages %}
+    <article class="message-card">
+      <div><span class="tag">{{ msg.emotion }}</span><small>{{ msg.created_at }}</small></div>
+      <h3>{{ msg.nickname }}</h3>
+      <p>{{ msg.content }}</p>
+      <blockquote>{{ msg.reply }}</blockquote>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
